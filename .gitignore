@@ -2,3 +2,5 @@
 node_modules
 # Ignora el archivo .env
 .env
+# Ignora carpeta storage (para almacenaje local de ejemplo)
+storage
