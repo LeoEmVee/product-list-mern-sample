@@ -10,7 +10,7 @@ const app = express(); // Crea aplicación express.
 
 (async function () {
   try { //Intenta:
-    await connectDB(dbConfig); // Esperar conexión a DB
+    await connectDB(dbConfig); // Esperar conexión a DB (llama la función definida en models/index, que recibe como parámetros el host, port y dbName configurados en dbConfig)
     app.listen(appConfig.port, () => { // Abrir el puerto especificado en appConfig.
       console.log(`Server listening on port ${appConfig.port}`);
     });
