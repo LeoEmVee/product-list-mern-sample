@@ -12,4 +12,4 @@ const ProductSchema = Schema({ // Esquema del dato (en este caso, producto)
   timestamps: true // Crea la propiedad "created_at" automáticamente.
 })
 
-module.exports = mongoose.model('Product', ProductSchema);
+module.exports = mongoose.model('Product', ProductSchema); // Exporta el esquema del componente (product). Lo importará el controller para operar con los datos conforme al mismo.

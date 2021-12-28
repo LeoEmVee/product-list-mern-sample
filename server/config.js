@@ -9,4 +9,4 @@ const config = {
   }
 }
 
-module.exports = config;
+module.exports = config; // Exporta el objeco config, que define la configuración de la app (puerto al que se conecta) y la de la base de datos (puerto, host y nombre).

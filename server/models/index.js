@@ -9,4 +9,4 @@ async function connectDB ({ host, port, dbName }) { // Función para la conexió
   await mongoose.connect(uri, { useNewUrlParser: true}); // Queda a la espera de la conexión (usar el URLparser nuevo evita problemas)
 }
 
-module.exports = connectDB;
+module.exports = connectDB; // Exporta la función de conexión a la DB. La importa index para llamarla al iniciar el servidor.
