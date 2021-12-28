@@ -1,8 +1,11 @@
+require('dotenv').config(); // Esta línea equivale a:
+// const dotenv = require('dotenv');
+// dotenv.config(); 
 const express = require('express');
+const { appConfig } = require('./config'); 
 
 const app = express();
-const PORT = 8080;
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
+app.listen(appConfig.PORT, () => {
+  console.log(`Server listening on port ${appConfig.PORT}`);
+})
