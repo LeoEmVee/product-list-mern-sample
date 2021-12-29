@@ -7,7 +7,7 @@ const storage = multer.diskStorage({ // Función copiada de la web. Para guardar
   filename: function (req, file, cb) { // Especifica el nombre que se le dará al archivo (que se crea abajo con la fecha actual y un número random).
     const uniqueSuffix = Date.now() + '-' + Math.round
     (Math.random() * 1E9)
-    cb(null, `${file.fieldname}-${uniqueSuffix}`);
+    cb(null, `${file.fieldname}-${uniqueSuffix}.png`);
   }
 })
 
