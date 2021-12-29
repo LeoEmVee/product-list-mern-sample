@@ -2,7 +2,6 @@ const mongoose = require('mongoose'); // Importa framework mongoose.
 const { appConfig } = require('../config');  // Importa la configuración de esta app (el host y el puerto).
 
 const Schema = mongoose.Schema; // Crea un esquema de mongoose (modelo de dato para la DB).
-
 const ProductSchema = Schema({ // Esquema del dato (en este caso, producto).
   name: String,
   size: Number,
