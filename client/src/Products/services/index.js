@@ -1,6 +1,6 @@
 import axios from 'axios'; // Importa librería Axios, que sirve para hacer peticiones a endpoints o a URLs.
 
-const baseUrl = 'http://localhost:8081/v1'; // Referencia al archivo del backend. Aquí es donde está la DB cuyos datos se rescatan.
+const baseUrl = process.env.REACT_APP_BASE_URL; // Referencia al archivo del backend. Aquí es donde está la DB cuyos datos se rescatan.
 
 export async function getProducts () { // Función para recuperar los productos de la DB. Se exporta para ser llamada desde ListProducts, que retornará el componente después de llamada la función.
   try { // Intenta:
