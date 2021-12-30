@@ -15,12 +15,17 @@ const ListProducts = () => { // Función que retorna el componente que luego ser
       if (response.status === 200) {
         setProducts(response.data.products);
       }
+
+      setIsLoading(false); // Cambia el estado de isLoading a false, para que se muestre el listado de productos en lugar del Loader.
     })();
   }, []); // El [] como segundo argumento de useEffect evita que la función asíncrona se ejecute si no hay cambios en la base de datos (porque el array vacío no cambia).
 
+  if (isLoading) return <Loading></Loading>; // Retorna el Loader si el estado es isLoading.
+
+  if (!products.length) return <h2 className="has-text-centered">No hay productos a listar</h2>;// Retorna mensaje en caso de que la operación de carga termine con resultado 0.
   
-  return ( // Contenido del componente que se retorna.
-    isLoading ? <Loading></Loading> : 'Mostrar listado de productos'
+  return ( // Retorna el listado de productos existentes.
+    'Mostrar listado de productos'
   );
 }
 
