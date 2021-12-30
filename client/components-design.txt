@@ -3,7 +3,9 @@
 ProductLayout
   Header
   AddButton
-  Loading
+  ListProducts
+    Loading
+    Products
 
 2. Versión estática componentes
 

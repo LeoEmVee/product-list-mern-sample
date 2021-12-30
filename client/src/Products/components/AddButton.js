@@ -6,7 +6,7 @@ const AddButton = () => { // Función que retorna el componente que luego será 
     <Section>
       <Container>
         <div className="is-pulled-right">
-          <Button color="primary">Er botón de añadir</Button>
+          <Button color="primary">Añadir producto</Button>
         </div>
       </Container>
     </Section>
