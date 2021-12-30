@@ -1,21 +1,7 @@
 import React, { useState, useEffect } from 'react'; // Importa framework React y hooks useState (un hook es una función especial de React para manejar estados del componente) y useEffect (para manejar el ciclo de vida del componente React, ejecutando efectos secundarios).
-import axios from 'axios'; // Importa librería Axios, que sirve para hacer peticiones a endpoints o a URLs.
+import { getProducts } from '../services'; // Importa getProducts desde service/index, para llamarla en el useEffect.
+
 import Loading from './Loading';  // Importa Loading, componente hijo, para retornarlo en la función de este componente (lo que luego será renderizado).
-
-const baseUrl = 'http://localhost:8081/v1'; // Referencia al archivo del backend. Aquí es donde está la DB cuyos datos se rescatan.
-
-async function getProducts () { // Función para recuperar los productos de la DB.
-  try { // Intenta:
-    const response = await axios({ // Recibe como parámetro un objeto con las propiedades:
-      url: `${baseUrl}/products`, // Su valor es la baseUrl y el endpoint donde están los productos.
-      method: 'GET' // El método de la request. GET es el default, pero lo especificamos para que se vea.
-    })
-    return response;
-  } catch (error) { // Devuelve error en caso de no lograr recuperar los datos.
-    console.log(error);
-  }
-
-}
 
 const ListProducts = () => { // Función que retorna el componente que luego será renderizado.
   const [isLoading, setIsLoading] = useState(true); // useState retorna dos valores: una variable de estado (en este caso true o false, el argumento que recibe useState) y una función de actualización del estado.
@@ -28,7 +14,6 @@ const ListProducts = () => { // Función que retorna el componente que luego ser
 
       if (response.status === 200) {
         setProducts(response.data.products);
-        console.log(response);
       }
     })();
   }, []); // El [] como segundo argumento de useEffect evita que la función asíncrona se ejecute si no hay cambios en la base de datos (porque el array vacío no cambia).
