@@ -1,8 +1,9 @@
 import React, { useState } from 'react'; // Importa framework React y hook useState (un hook es una función especial de React para manejar estados del componente).
-import { Modal } from 'react-bulma-components'; // Importa Modal de react-bulma-components. Un modelo de formulario.
+import { Modal } from 'react-bulma-components'; // Importa Modal de react-bulma-components. Un modelo de card para poner el formulario encima.
 import Header from './Header'; // Importa Header, componente hijo, para retornarlo en la función de este componente (lo que luego será renderizado).
 import AddButton from './AddButton'; // Importa AddButton, componente hijo, para retornarlo en la función de este componente (lo que luego será renderizado).
 import ListProducts from './ListProducts'; // Importa ListProducts, componente hijo, para retornarlo en la función de este componente (lo que luego será renderizado).
+import Form from './Form'; // Importa Form, componente hijo, para retornarlo en la función de este componente (lo que luego será renderizado).
 
 const ProductLayout = () => { // Función que retorna el componente que luego será renderizado: los componentes hijos importados Header, AddButton y ListProducts (con el estado que le corresponda), y el componente Modal de Bulma, para crear el formulario de entrada de productos. Añadido método onClick al AddButton, con el que se abre el formulario (setIsModalOpen(true)).
   const [isModalOpen, setIsModalOpen] = useState(false); // useState retorna dos valores: una variable de estado (en este caso true o false, el argumento que recibe useState) y una función de actualización del estado.
@@ -18,7 +19,7 @@ const ProductLayout = () => { // Función que retorna el componente que luego se
           Formulario
         </Modal.Card.Header>
         <Modal.Card.Body>
-          Formulario aquí
+          <Form></Form>
         </Modal.Card.Body>
       </Modal.Card>
       </Modal>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; // Importa framework React y hooks useState (un hook es una función especial de React para manejar estados del componente) y useEffect (para manejar el ciclo de vida del componente React, ejecutando efectos secundarios).
+import React, { useState, useEffect } from 'react'; // Importa framework React y hooks useState (función especial de React para manejar estados del componente) y useEffect (para manejar el ciclo de vida del componente React, ejecutando efectos secundarios).
 import { getProducts } from '../services'; // Importa getProducts desde service/index, para llamarla en el useEffect.
 
 import Loading from './Loading';  // Importa Loading, componente hijo, para retornarlo en la función de este componente (lo que luego será renderizado).
