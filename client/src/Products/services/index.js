@@ -13,3 +13,16 @@ export async function getProducts () { // Función para recuperar los productos 
     console.log(error);
   }
 }
+
+export async function saveProduct (productData) { // Función para guardar los productos en la DB. Recibe como parámetro los datos del producto a guardar.
+  try { // Intenta:
+    const response = await axios({ // Recibe como parámetro un objeto con las propiedades:
+      url: `${baseUrl}/products`, // Su valor es la baseUrl y el endpoint donde están los productos.
+      method: 'POST', // El método de la request. POST, que es el método para guardar.
+      data: productData // Los datos del producto a guardar.
+    })
+    return response;
+  } catch (error) { // Devuelve error en caso de no lograr guardar los datos.
+    console.log(error);
+  }
+}
