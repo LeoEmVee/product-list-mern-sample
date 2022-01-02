@@ -3,7 +3,7 @@ import { Form as BulmaForm, Button } from 'react-bulma-components'; // Importa F
 
 const { Field, Control, Label, Input } = BulmaForm;
 
-const Form = () => { // Función que retorna el componente que luego será renderizado.
+const Form = ({ handleSubmit }) => { // Función que retorna el componente que luego será renderizado.
   const [formValues, setFormValues] = useState({
     name: '',
     size: '',
@@ -18,14 +18,13 @@ const Form = () => { // Función que retorna el componente que luego será rende
     setFormValues({ ...formValues, [name]: value }); // Actualiza el estado del formulario, de lo que esté en el estado actual a lo que resulte de la introducción de nuevos datos.
   }
 
-  const handleSubmit = (event) => { // Función para manejar la introducción de datos del formulario (submit); se ejecuta con el evento onSubmit del form que retorna este componente.
+  const _handleSubmit = (event) => { // Función para manejar la introducción de datos del formulario (submit); se ejecuta con el evento onSubmit del form que retorna este componente. Se le pone guión bajo al inicio para qeu no colisione con la handleSubmit que se le pasa a este hijo desde ProductLayout, componente padre, como parámetro de la función de este componente. Se diferencia así como método privado de este componente.
     event.preventDefault(); // Evita que cuando se haga el submit de los datos la página se reinicie.
-    console.log(formValues); // Loguea los valores del formulario.
-    console.log(inputFileRef.current.files); // Loguea el valor del archivo subido.
+    handleSubmit({ ...formValues, image: inputFileRef.current.files[0]}); // Llama a handleSubmit del componente padre (ProductLayout), para manejar los datos que se introduzcan en este componentes. Como parámetros, recibe formValues (los datos introducidos) y una imagen que es igual al primer índice (el archivo) de inputFileRef.current.files cuadno se haya subido una.
   }
 
   return ( // Contenido del componente que se retorna. Ver inputs, onChange(), etc. Uno por cada input del formulario (también el del archivo, que es un input normal y no de Bulma). Y un botón para guardar (igual al del AddButton).
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={_handleSubmit}>
       <Field>
         <Label>Nombre</Label>
         <Control>
@@ -38,7 +37,7 @@ const Form = () => { // Función que retorna el componente que luego será rende
         </Control>
       </Field>
       <Field>
-        <Label>Tamaño</Label>
+        <Label>Stock</Label>
         <Control>
           <Input
             placeholder="Text input"

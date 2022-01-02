@@ -14,12 +14,19 @@ export async function getProducts () { // Función para recuperar los productos 
   }
 }
 
-export async function saveProduct (productData) { // Función para guardar los productos en la DB. Recibe como parámetro los datos del producto a guardar.
+export async function saveProduct (productData) { // Función para guardar los productos en la DB. Recibe como parámetro los datos del producto a guardar. Será llamada en ProductLayout cuando el hijo Form reciba datos nuevos.
   try { // Intenta:
+    const formData = new FormData(); // Crea una instancia de FormData (interfaz de JS) para poder enviar la imagen a la DB.
+    formData.append('name', productData.name); // Añade a los datos del formulario el nombre y el valor del dato que se envía, que tiene que coincidir con el que espera la API (ver controller y router).
+    formData.append('size', productData.size);
+    formData.append('unitaryPrice', productData.unitaryPrice);
+    formData.append('description', productData.description);
+    formData.append('image', productData.image);
+
     const response = await axios({ // Recibe como parámetro un objeto con las propiedades:
-      url: `${baseUrl}/products`, // Su valor es la baseUrl y el endpoint donde están los productos.
-      method: 'POST', // El método de la request. POST, que es el método para guardar.
-      data: productData // Los datos del producto a guardar.
+    url: `${baseUrl}/products`, // Su valor es la baseUrl y el endpoint donde están los productos.
+    method: 'POST', // El método de la request. POST, que es el método para guardar.
+    data: formData // Los datos del producto a guardar, que vienen del formData arriba.
     })
     return response;
   } catch (error) { // Devuelve error en caso de no lograr guardar los datos.
