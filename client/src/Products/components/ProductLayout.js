@@ -16,7 +16,9 @@ const ProductLayout = () => { // Función que retorna el componente que luego se
       <Modal show={isModalOpen} onClose={() => setIsModalOpen(false)}>
       <Modal.Card>
         <Modal.Card.Header>
-          Formulario
+          <Modal.Card.Title>
+            Introduzca los datos del producto
+          </Modal.Card.Title>
         </Modal.Card.Header>
         <Modal.Card.Body>
           <Form></Form>
