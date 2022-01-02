@@ -4,7 +4,7 @@ import { Loader } from 'react-bulma-components'; // Importa componente Loader re
 const Loading = () => { // Función que retorna el componente que luego será renderizado.
   return ( // Contenido del componente que se retorna.
     <div className="columns is-centered">
-      <Loader style={{width: 200, heigth: 200}}>TEXTOEJEMPLOLOADINGPARAQUESEVEA</Loader>
+      <Loader style={{width: 200, heigth: 200}}></Loader>
     </div>
     
   )
