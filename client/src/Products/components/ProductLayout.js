@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'; // Importa framework React y hooks useState (función especial de React para manejar estados del componente) y useEffect (para manejar el ciclo de vida del componente React, ejecutando efectos secundarios).
-import { Modal } from 'react-bulma-components'; // Importa Modal de react-bulma-components. Un modelo de card para poner el formulario encima.
+import { Modal, Container } from 'react-bulma-components'; // Importa Modal de react-bulma-components, un modelo de card para poner el formulario encima, y el componente Container.
 import Header from './Header'; // Importa Header, componente hijo, para retornarlo en la función de este componente (lo que luego será renderizado).
 import AddButton from './AddButton'; // Importa AddButton, componente hijo, para retornarlo en la función de este componente (lo que luego será renderizado).
 import ListProducts from './ListProducts'; // Importa ListProducts, componente hijo, para retornarlo en la función de este componente (lo que luego será renderizado).
@@ -33,16 +33,18 @@ const ProductLayout = () => { // Función que retorna el componente que luego se
   }
   
   return ( // Contenido de lo que se retorna para renderizar por index (que es el contenido de todos los componentes hijos de este).
-    <>
+    <Container>
       <Header title="Seguimiento de productos"></Header>
       <AddButton onClick={() => setIsModalOpen(true)}></AddButton>
       {
         isLoading && <Loading></Loading>// Retorna el Loader si el estado es isLoading.
       }
       {
-        !products.length && <h2 className="has-text-centered">No hay productos a listar</h2> // Retorna mensaje en caso de que la operación de carga termine con resultado 0.
+        !isLoading && !products.length && <h2 className="has-text-centered">No hay productos a listar</h2> // Retorna mensaje en caso de que la operación de carga termine con resultado 0.
       }
-      <ListProducts products={products}></ListProducts>
+      {
+        !isLoading && products.length && <ListProducts products={products}></ListProducts> // Retorna la lista de productos (ListProducts) si la operación de carga termina con resultado positivo.
+      }
       <Modal show={isModalOpen} onClose={() => setIsModalOpen(false)}>
       <Modal.Card>
         <Modal.Card.Header>
@@ -55,7 +57,7 @@ const ProductLayout = () => { // Función que retorna el componente que luego se
         </Modal.Card.Body>
       </Modal.Card>
       </Modal>
-    </>
+    </Container>
   );
 }
 
