@@ -1,30 +1,7 @@
-import React, { useState, useEffect } from 'react'; // Importa framework React y hooks useState (función especial de React para manejar estados del componente) y useEffect (para manejar el ciclo de vida del componente React, ejecutando efectos secundarios).
-import { getProducts } from '../services'; // Importa getProducts desde service/index, para llamarla en el useEffect.
+import React from 'react'; // Importa framework React.
 
-import Loading from './Loading';  // Importa Loading, componente hijo, para retornarlo en la función de este componente (lo que luego será renderizado).
-
-const ListProducts = () => { // Función que retorna el componente que luego será renderizado.
-  const [isLoading, setIsLoading] = useState(true); // useState retorna dos valores: una variable de estado (en este caso true o false, el argumento que recibe useState) y una función de actualización del estado.
-  // Equivale a: const state = useState(true), state[0] = isLoading, state[1] = setIsLoading.
-  const [products, setProducts] = useState([]); // useState retorna los productos de la base de datos. Una es el estado de los productos (si existen o no), y la otra actualiza el estado (según haya productos introducidos o no).
-
-  useEffect(() => { // Función que se ejecuta después del renderizado. Equivale a componentDidMount(), componentDidUpdate() y componentWillMount() (que necesitan render() antes del return) en componentes tipo clase. Sirve para actualizar estados cuando hay algún cambio en backend, o para actualizaciones en una suscripción (en ese caso el efecto debe ser ejecutado con saneamiento para evitar saturar la memoria).
-    (async function () { // Declara que la respuesta (lo que será el componente) de la función será el resultado de getProducts() cada vez que se actualice el estado del componente.
-      const response = await getProducts();
-
-      if (response.status === 200) {
-        setProducts(response.data.products);
-      }
-
-      setIsLoading(false); // Cambia el estado de isLoading a false, para que se muestre el listado de productos en lugar del Loader.
-    })();
-  }, []); // El [] como segundo argumento de useEffect evita que la función asíncrona se ejecute si no hay cambios en la base de datos (porque el array vacío no cambia).
-
-  if (isLoading) return <Loading></Loading>; // Retorna el Loader si el estado es isLoading.
-
-  if (!products.length) return <h2 className="has-text-centered">No hay productos a listar</h2>;// Retorna mensaje en caso de que la operación de carga termine con resultado 0.
-  
-  return ( // Retorna el listado de productos existentes.
+const ListProducts = ({ products }) => { // Función que retorna el componente que luego será renderizado; la lista de productos cuando esta existe (la lógica de si listarla o no está en ProductLayout). Recibe como props de su padre (ProductLayout) los productos a listar.
+  return ( // Itera y retorna el listado de productos existentes.
     'Mostrar listado de productos'
   );
 }
