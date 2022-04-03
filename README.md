@@ -6,7 +6,10 @@ Small products list, built with MongoDB, Express, React and Node.js, following t
 
 - `npm i` (on both client and server side)
 - `node index.js` (or `nodemon index.js`) on server && `npm start` on client.
-- You will need a ".env" file and a "storage" folder for the images.
+- You will need a "storage" folder in server side for the images.
+- You will need a ".env" file in each side:
+  - Client: REACT_APP_BASE_URL (localhost).
+  - Server: APP_PORT (port of your choice), APP_HOST (localhost), DB_NAME (I chose store), DB_PORT (your choice), DB_HOST (local)
 
 # To do
 
