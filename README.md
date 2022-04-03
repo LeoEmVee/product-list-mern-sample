@@ -1,6 +1,6 @@
-# Intro-MERN
+# Products List MERN Sample
 
-Small products list, built following the tutorial by [Developero](https://developero.io/) in YouTube: [Api fetch con Next.js](https://www.youtube.com/watch?v=p9RfYt6PGRc&list=PLkr7dGY4D2sOFts538pghxWaabulH2kMU&index=1).
+Small products list, built with MongoDB, Express, React and Node.js, following the tutorial by [Developero](https://developero.io/) in YouTube: [Api fetch con Next.js](https://www.youtube.com/watch?v=p9RfYt6PGRc&list=PLkr7dGY4D2sOFts538pghxWaabulH2kMU&index=1).
 
 # To run locally
 
